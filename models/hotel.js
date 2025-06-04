@@ -20,6 +20,10 @@ const Hotel = sequelize.define("hotel", {
         type: Sequelize.TEXT,
         allowNull: false,
     },
+    imageUrl: {
+  type: Sequelize.STRING,
+  allowNull: true,
+},
     price: {
         type: Sequelize.INTEGER,
         allowNull: false,

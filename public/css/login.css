@@ -1,41 +1,36 @@
 body {
-  background-color: #f4f4f4;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 50px;
+  background-color: #f8f9fa;
 }
 
-form {
-  background: white;
-  padding: 20px;
-  margin: auto;
-  max-width: 350px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px gray;
+h2 {
+  color: #343a40;
 }
 
-input {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 90%;
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: none;
+}
+
+input::placeholder {
+  font-size: 0.95rem;
 }
 
 button {
-  background: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #007bff;
   font-weight: bold;
 }
 
-nav a:hover {
-  color: #0056b3;
+.navbar-brand {
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-link {
+  color: #ffffff !important;
+}
+
+.nav-link:hover {
+  color: #e2e6ea !important;
 }

@@ -9,7 +9,8 @@ form.addEventListener("submit", async (event) => {
             name: event.target.name.value,
             city: event.target.city.value,
             description: event.target.description.value,
-            price: event.target.price.value
+            price: event.target.price.value,
+            imageUrl: event.target.imageUrl.value
         };
 
         console.log("hotelDetails", hotelDetails);

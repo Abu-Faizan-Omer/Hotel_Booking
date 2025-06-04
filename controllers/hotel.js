@@ -7,6 +7,7 @@ exports.searchHotel = async (req, res) => {
     try {
         const { city } = req.query;
         const hotels = await Hotel.findAll({ where: { city: { [Op.like]: `%${city}%` } } });
+        console.log("Hotel-",hotels)
         res.status(200).json({ success: true, hotels });
     } catch (err) {
         console.log(err);

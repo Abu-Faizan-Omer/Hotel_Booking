@@ -32,6 +32,9 @@ async function searchHotels() {
                     <h3>${hotel.name}</h3>
                     <span class="rating-badge">${avgRating}★</span>
                 </div>
+                <div class="hotel-image">
+                <img src="${hotel.imageUrl || 'default_image_url.jpg'}" alt="${hotel.name}" class="img-fluid" />
+                </div>
                 <p>${hotel.description}</p>
                 <p>City: ${hotel.city} | Price: ₹${hotel.price}</p>
                 <button onclick="bookHotel(${hotel.id}, ${hotel.price})">Book</button>

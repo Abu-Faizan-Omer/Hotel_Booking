@@ -1,17 +1,16 @@
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f2f2f2;
-  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #007bff;
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-title {
   font-weight: bold;
 }
 
-nav a:hover {
-  color: #0056b3;
+.nav-link.active {
+  text-decoration: underline;
 }
