@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <nav>
+    <a href="./signup">Signup</a>
+    <a href="./login">Login</a>
+    <a href="./hotel">Search Hotels</a>
+    <a href="./admin">Admin Panel</a>
+  </nav>
+  <h2>Admin - Add Hotel</h2>
+  <form id="form">
+    <input type="text" name="name" placeholder="Hotel Name" required /><br />
+    <input type="text" name="city" placeholder="City" required /><br />
+    <textarea name="description" placeholder="Description" required></textarea><br />
+    <input type="number" name="price" placeholder="Price" required /><br />
+    <button type="submit">Add Hotel</button>
+  </form>
+  
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

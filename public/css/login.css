@@ -1,0 +1,41 @@
+body {
+  background-color: #f4f4f4;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 40px;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  margin: auto;
+  max-width: 350px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px gray;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 90%;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #0056b3;
+}

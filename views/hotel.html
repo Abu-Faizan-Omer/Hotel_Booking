@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Hotels</title>
+  <link rel="stylesheet" href="/css/hotel.css" />
+</head>
+<body>
+  <nav>
+    <a href="./signup">Signup</a>
+    <a href="./login">Login</a>
+    <a href="./hotel">Search Hotels</a>
+    <a href="./admin">Admin Panel</a>
+  </nav>
+  <h2>Search Hotels</h2>
+  <input type="text" id="cityInput" placeholder="Enter city" />
+  <button onclick="searchHotels()">Search</button>
+  <div id="hotelList"></div>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/hotel.js"></script>
+</body>
+</html>
