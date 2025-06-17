@@ -5,7 +5,12 @@ async function searchHotels() {
     const token = localStorage.getItem("token");
 
     try {
-        const response = await axios.get(`http://localhost:3000/hotel/search?city=${city}`, {
+         const url = city 
+    ? `http://localhost:3000/hotel/search?city=${city}` 
+    : `http://localhost:3000/hotel/all`;
+
+
+        const response = await axios.get(url, {
             headers: { Authorization: token }
         });
 
@@ -13,13 +18,22 @@ async function searchHotels() {
         hotelList.innerHTML = "";
 
         for (const hotel of response.data.hotels) {
-            const reviewRes = await axios.get(`http://localhost:3000/hotel/reviews/${hotel.id}`);
+            const reviewRes = await axios.get(`http://localhost:3000/review/hotel/${hotel.id}`);
             const reviews = reviewRes.data.reviews;
 
-            const avgRating = reviews.length
-                ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
-                : "No rating";
+            // const avgRating = reviews.length
+            //     ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
+            //     : "No rating";
+            let avgRating = "No rating";
+            if (reviews.length > 0) {
+            let total = 0;
+            for (let r of reviews) {
+                total += r.rating;
+            }
+            avgRating = (total / reviews.length).toFixed(1);
+            }
 
+                //star
             const reviewHTML = reviews.map(r =>
                 `<li><strong>${r.rating}★</strong> - ${r.comment}</li>`).join("");
 
@@ -83,7 +97,7 @@ async function bookHotel(hotelId, price) {
                 alert("Payment successful!");
                 console.log("Payment ID:", response.razorpay_payment_id);
 
-                // ✅ Confirm payment to backend
+                //  Confirm payment to backend
                 axios.post("http://localhost:3000/booking/verify", {
                     razorpay_order_id: orderId,
                     razorpay_payment_id: response.razorpay_payment_id
@@ -91,7 +105,7 @@ async function bookHotel(hotelId, price) {
                     headers: { Authorization: token }
                 })
                 .then(() => {
-                    // ✅ Now allow review UI
+                    //  Now allow review UI
                     const reviewDiv = document.createElement("div");
                     reviewDiv.innerHTML = `
                         <h4>Leave a Review</h4>
@@ -137,3 +151,7 @@ async function submitReview(hotelId) {
         alert("Could not submit review");
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    searchHotels();
+});

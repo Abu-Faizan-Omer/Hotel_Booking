@@ -6,8 +6,9 @@ const { Op } = require("sequelize");
 exports.searchHotel = async (req, res) => {
     try {
         const { city } = req.query;
-        const hotels = await Hotel.findAll({ where: { city: { [Op.like]: `%${city}%` } } });
-        console.log("Hotel-",hotels)
+        const hotels = await Hotel.findAll({where: { city: city }});
+
+        //console.log("Hotel-",hotels)
         res.status(200).json({ success: true, hotels });
     } catch (err) {
         console.log(err);
@@ -25,21 +26,7 @@ exports.getAllHotels = async (req, res) => {
         res.status(500).json({ success: false });
     }
 };
-
-// Leave review for a hotel
-exports.giveReview = async (req, res) => {
-    try {
-        const { hotelId } = req.params;
-        const { rating, comment } = req.body;
-        const userId = req.user.id;
-
-        const review = await Review.create({ userId, hotelId, rating, comment });
-        res.status(201).json({ success: true, review });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ success: false });
-    }
-};
+;
 
 // Get all reviews of a hotel
 exports.getReviews = async (req, res) => {

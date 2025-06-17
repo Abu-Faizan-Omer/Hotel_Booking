@@ -9,7 +9,7 @@ form.addEventListener("submit", async (event) => {
             name: event.target.name.value,
             email: event.target.email.value,
             password: event.target.password.value,
-            adminEmail: event.target.adminemail.value, // ✅ include this
+            adminEmail: event.target.adminemail.value, 
         };
 
         console.log("signupDetails", userDetails);

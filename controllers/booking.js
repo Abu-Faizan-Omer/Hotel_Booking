@@ -3,41 +3,6 @@ const Booking = require("../models/booking");
 const Hotel = require("../models/hotel");
 const razorpay = require("../utils/razorpay");
 
-
-
-// Create a booking with Razorpay
-exports.bookHotel = async (req, res) => {
-    try {
-        const { hotelId } = req.params;
-        const userId = req.user.id;
-        const hotel = await Hotel.findByPk(hotelId);
-
-        if (!hotel) {
-            return res.status(404).json({ success: false, message: "Hotel not found" });
-        }
-
-        const amount = hotel.price * 100; // Razorpay works in paisa
-
-        const order = await razorpay.orders.create({
-            amount,
-            currency: "INR",
-            receipt: `receipt_order_${Date.now()}`,
-        });
-
-        await Booking.create({
-            userId,
-            hotelId,
-            amount: hotel.price,
-            paymentId: order.id,
-        });
-
-        res.status(201).json({ success: true, order });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ success: false });
-    }
-};
-
 // Get booking history of user
 exports.getBookingHistory = async (req, res) => {
     try {
@@ -45,6 +10,7 @@ exports.getBookingHistory = async (req, res) => {
         const bookings = await Booking.findAll({
             where: { userId },
             include: [{ model: Hotel }],
+            order: [['createdAt', 'DESC']]
         });
         res.status(200).json({ success: true, bookings });
     } catch (err) {
@@ -53,6 +19,7 @@ exports.getBookingHistory = async (req, res) => {
     }
 };
 
+//verify payment
 exports.verifyPayment = async (req, res) => {
     try {
         const { razorpay_order_id, razorpay_payment_id } = req.body;
@@ -77,7 +44,7 @@ exports.verifyPayment = async (req, res) => {
 };
 
 
-
+//book hotel
 exports.createBooking = async (req, res) => {
     try {
         const { amount } = req.body;

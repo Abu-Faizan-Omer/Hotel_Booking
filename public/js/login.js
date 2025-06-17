@@ -8,7 +8,7 @@ form.addEventListener("submit", async (event) => {
         const loginDetails = {
             email: event.target.email.value,
             password: event.target.password.value,
-             adminEmail: event.target.adminemail.value // optional
+             adminEmail: event.target.adminemail.value 
         };
 
         console.log("loginDetails", loginDetails);
@@ -18,11 +18,6 @@ form.addEventListener("submit", async (event) => {
         if (response.status === 200) {
             alert(response.data.message);
             localStorage.setItem("token", response.data.token);
-
-            const oldFilterData = localStorage.getItem("searchFilter");
-            if (oldFilterData) {
-                localStorage.removeItem("searchFilter");
-            }
 
             if (response.data.isAdmin) {
                 window.location.href = "./admin";

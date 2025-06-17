@@ -13,7 +13,7 @@ exports.addReview = async (req, res) => {
             return res.status(404).json({ message: "Hotel not found" });
         }
 
-        // ✅ Check if user booked this hotel
+        //  Check if user booked this hotel
         const existingBooking = await Booking.findOne({
             where: { userId: req.user.id, hotelId }
         });
@@ -36,7 +36,7 @@ exports.addReview = async (req, res) => {
     }
 };
 
-
+//get Review
 exports.getHotelReviews = async (req, res) => {
     try {
         const { hotelId } = req.params;
